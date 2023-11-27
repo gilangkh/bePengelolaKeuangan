@@ -116,7 +116,9 @@ const getAllTransaksi = async (req, res) => {
 
 const createTransaksi = async (req, res) => {
     try {
-        const { id_transaksi, id_user, id_kategori, id_jenis, id_aset, tanggal, jumlah, note } = req.body;
+
+        const { id_transaksi, id_kategori, id_jenis, id_aset, tanggal, jumlah, note } = req.body;
+        const id_user = req.user.id_user;
 
         const errorMessage = !id_transaksi && !id_user && !id_kategori && !id_jenis && !id_aset && !tanggal && !jumlah && !note
             ? "ID Transaksi, ID User, ID Kategori, ID Jenis, ID Aset, Tanggal, Jumlah, dan Note tidak boleh kosong"
@@ -141,12 +143,14 @@ const createTransaksi = async (req, res) => {
         if (errorMessage) {
             res.status(403).json({ error: errorMessage });
         } else {
+  
             const newTransaksi = await Transaksi.create({ id_transaksi, id_user, id_kategori, id_jenis, id_aset, tanggal, jumlah, note });
 
             res.status(201).json({
                 data: newTransaksi,
                 success: "Transaksi baru ditambahkan",
             });
+   
         }
     } catch (error) {
         console.error(error.message);

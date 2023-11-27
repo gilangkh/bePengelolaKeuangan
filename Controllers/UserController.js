@@ -12,6 +12,15 @@ const getAllUser = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+    /* 
+    {
+"id_user":"qwe",
+"id_daerah":"SUMBAR",
+"nama":"gilang",
+"email":"gilang@gmail.com",
+"password":"gilang123"
+}
+*/
     try {
         let { id_user, id_daerah, nama, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password,10)
@@ -33,7 +42,7 @@ const createUser = async (req, res) => {
         if (errorMessage) {
             res.status(403).json({ error: errorMessage });
         } else {
-            const newUser = await User.create({ id_user, id_daerah, nama, email, hashedPassword });
+            const newUser = await User.create({ id_user, id_daerah, nama, email, password:hashedPassword });
 
             res.status(201).json({
                 data: newUser,
