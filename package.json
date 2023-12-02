@@ -1,5 +1,5 @@
 {
-  "name": "bepengelolakeuangan",
+  "name": "backendcfm",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -20,8 +20,8 @@
     "nodemon": "^3.0.1",
     "sequelize": "^6.35.1"
   },
-  "description": "back end pengelola kauangan",
+  "description": "back end cfm",
   "main": "app.js",
-  "author": "Gilang Kharisma",
+  "author": "Fahri Andika Sanjaya",
   "license": "ISC"
 }
