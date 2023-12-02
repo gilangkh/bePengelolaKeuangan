@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const getAllUser = async (req, res) => {
     try {
         const users = await User.findAll();
+        console.log (users)
         res.status(200).json(users);
     } catch (error) {
         console.error(error.message);
