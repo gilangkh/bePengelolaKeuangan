@@ -5,6 +5,7 @@ const { getAllTransaksi, createTransaksi, updateTransaksi, deleteTransaksi, getT
 const { getAllKategori, createKategori, updateKategori, deleteKategori, getKategori } = require('../Controllers/KategoriController');
 const { getAllJenisTransaksi, createJenisTransaksi, updateJenisTransaksi, deleteJenisTransaksi, getJenisTransaksi } = require('../Controllers/JenisTransaksiController');
 const { getAllAset, createAset, updateAset, deleteAset, getAset } = require('../Controllers/AsetControlles');
+const { getAllAnggaran, createAnggaran, updateAnggaran, deleteAnggaran, getAnggaran } = require('../Controllers/AnggaranController'); 
 const { login, logout } = require('../Controllers/AuthController');
 const { authenticateToken } = require('../middleware/authToken');
 
@@ -56,5 +57,12 @@ router.post('/jenistransaksi', createJenisTransaksi);
 router.get('/jenistransaksi/:id_jenis', getJenisTransaksi);
 router.put('/jenistransaksi/:id_jenis', updateJenisTransaksi);
 router.delete('/jenistransaksi/:id_jenis', deleteJenisTransaksi);
+
+// Anggaran
+router.get('/anggaran', getAllAnggaran);
+router.post('/anggaran', createAnggaran);
+router.get('/anggaran/:id_anggaran', getAnggaran);
+router.put('/anggaran/:id_anggaran', updateAnggaran);
+router.delete('/anggaran/:id_anggaran', deleteAnggaran);
 
 module.exports = router;

@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const generateToken = (user) => {
-  return jwt.sign({ user_id: user.user_id, email: user.email, status:user.status }, process.env.SECRET_TOKEN);
+  return jwt.sign({ id_user: user.id_user, email: user.email }, process.env.SECRET_TOKEN);
 };
 
 const login = async (req, res) => {

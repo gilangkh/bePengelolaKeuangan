@@ -3,7 +3,8 @@ const sequelize = new Sequelize("mysql://root@localhost/pengelola_kauangan");
 
 const Transaksi = sequelize.define('Transaksi', {
     id_transaksi: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
     },
     id_user: {
