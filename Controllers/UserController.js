@@ -1,4 +1,7 @@
+const { Model } = require('sequelize');
 const Daerah = require('../Models/DaerahModel');
+const Kategori = require('../Models/KategoriModel');
+const Aset = require('../Models/AsetModel');
 const User = require('../Models/UserModel');
 const bcrypt = require('bcrypt')
 
@@ -53,11 +56,37 @@ const createUser = async (req, res) => {
             res.status(403).json({ error: errorMessage });
         } else {
             const newUser = await User.create({  id_daerah, nama, email, password:hashedPassword });
-
-            res.status(201).json({
-                data: newUser,
-                success: "User baru ditambahkan",
-            });
+            if(newUser !=null||undefined){
+                const modkategories = await  Kategori.bulkCreate([
+                    {   
+                        id_user:newUser.id_user,
+                        id_jenis:1,
+                        nama : "gaji" 
+                    },{
+                        id_user:newUser.id_user,
+                        id_jenis:2,
+                        nama : "makkanan" 
+                    }
+                ])
+                const modAset = await Aset.bulkCreate([
+                    {   
+                        id_user:newUser.id_user,
+                        nama : "TUNAI" 
+                    },{
+                        id_user:newUser.id_user,
+                        nama : "BANK" 
+                    }
+                ]
+                    )
+                    res.status(201).json({
+                        data: newUser,
+                        iclude :[{
+                            kategori: modkategories,
+                            aset : modAset
+                        }],
+                        success: "User baru ditambahkan",
+                    });
+            }
         }
     } catch (error) {
         console.error(error.message);

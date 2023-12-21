@@ -6,6 +6,10 @@ const Kategori = sequelize.define('Kategori', {
         type: DataTypes.STRING,
         primaryKey: true,
     },
+    id_user:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
     id_jenis: {
         type: DataTypes.STRING,
         allowNull: false,

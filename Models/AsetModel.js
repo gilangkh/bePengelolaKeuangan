@@ -6,6 +6,10 @@ const Aset = sequelize.define('Aset', {
         type: DataTypes.STRING,
         primaryKey: true,
     },
+    id_user:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
     nama: {
         type: DataTypes.STRING,
         allowNull: false,

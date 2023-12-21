@@ -4,6 +4,7 @@ const Daerah = require('./DaerahModel')
 const JenisTransaksi = require('./JenisTransaksiModel')
 const Kategori = require('./KategoriModel')
 const Transaksi = require('./TransaksiModel')
+const Anggaran = require('./AnggaranModel')
 
 Aset.hasMany(Transaksi, { foreignKey: 'id_aset' });
 Transaksi.belongsTo(Aset, { foreignKey: 'id_aset' });
@@ -20,6 +21,11 @@ Transaksi.belongsTo(Kategori, { foreignKey: 'id_kategori' });
 JenisTransaksi.hasMany(Transaksi, { foreignKey: 'id_jenis' });
 Transaksi.belongsTo(JenisTransaksi, { foreignKey: 'id_jenis' });
 
-Kategori.hasMany(JenisTransaksi, { foreignKey: 'id_jenis' });
-JenisTransaksi.belongsTo(Kategori, { foreignKey: 'id_jenis' });
+JenisTransaksi.hasMany(Kategori, { foreignKey: 'id_jenis' });
+Kategori.belongsTo(JenisTransaksi, { foreignKey: 'id_jenis' });
 
+User.hasMany
+
+module.exports = {
+    User,Aset,Daerah,JenisTransaksi,Kategori,Transaksi,Anggaran
+}
